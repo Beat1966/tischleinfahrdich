@@ -4,6 +4,7 @@
   const CONFIG_URL = new URL('../data/config.json', document.currentScript.src).href;
   let appConfig = null;
   let lastPayload = null;
+  let availableDates = [];
 
   const form = document.getElementById('anfrage-form');
   if (!form) return;
@@ -153,6 +154,9 @@
       ok = false;
     } else if (dateObj < nextFri) {
       showError('err-datum', 'Bitte wählen Sie frühestens den nächsten Freitag.');
+      ok = false;
+    } else if (!availableDates.includes(elDate.value)) {
+      showError('err-datum', 'Dieser Freitag ist nicht verfügbar. Bitte wählen Sie einen Termin aus der Liste.');
       ok = false;
     } else {
       showError('err-datum', '');
@@ -390,6 +394,38 @@
   btnCalc.addEventListener('click', calculateAndDisplay);
   form.addEventListener('submit', handleSubmit);
 
+  // Verfügbare Freitage: zuerst live aus dem Google Sheet (Tab «Verfügbarkeit»
+  // über die Apps-Script-Web-App, GET), sonst aus config.json.
+  async function loadAvailability(cfg) {
+    let daten = null;
+    if (cfg.anfrageEndpoint) {
+      try {
+        const r = await fetch(cfg.anfrageEndpoint, { method: 'GET' });
+        const j = await r.json();
+        if (j && j.status === 'ok' && Array.isArray(j.daten)) daten = j.daten;
+      } catch (e) { /* Fallback auf config.json */ }
+    }
+    if (!daten) daten = Array.isArray(cfg.verfuegbareDaten) ? cfg.verfuegbareDaten : [];
+    const nextFri = getNextFriday();
+    availableDates = daten
+      .filter(d => { const o = parseLocalDate(d); return o && o.getDay() === cfg.erlaubterWochentag && o >= nextFri; })
+      .sort();
+    elDate.innerHTML = '';
+    if (!availableDates.length) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'Zurzeit keine freien Termine – bitte später wieder vorbeischauen';
+      elDate.appendChild(opt);
+      return;
+    }
+    availableDates.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d;
+      opt.textContent = parseLocalDate(d).toLocaleDateString('de-CH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      elDate.appendChild(opt);
+    });
+  }
+
   // Initialisierung
   fetch(CONFIG_URL)
     .then(r => {
@@ -398,14 +434,9 @@
     })
     .then(cfg => {
       appConfig = cfg;
-      const nextFri = getNextFriday();
-      const nextFriStr = formatISODate(nextFri);
-      elDate.min = nextFriStr;
-      elDate.step = '7';
-      elDate.value = nextFriStr;
-
       populateSelects(cfg);
       updatePlan();
+      return loadAvailability(cfg);
     })
     .catch(() => {
       statusBox.className = 'status-box status-box--fallback is-visible';
