@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const CONFIG_URL = '/data/config.json';
+  const CONFIG_URL = new URL('../data/config.json', document.currentScript.src).href;
   let appConfig = null;
   let lastPayload = null;
 
