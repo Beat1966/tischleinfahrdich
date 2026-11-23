@@ -22,46 +22,69 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="../css/style.css">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://tischleinfahrdich.ch/#organization",
-        "name": "Tischlein fahr dich",
-        "url": "https://tischleinfahrdich.ch/",
-        "logo": "https://tischleinfahrdich.ch/img/favicon.svg",
-        "areaServed": ["Grossraum Thun", "Grossraum Bern"],
-        "description": "tischleinfahrdich.ch macht historische Automobile als Kulturgut für einen erweiterten Kreis erlebbar. Kein gewerblicher Anbieter: Der Unkostenbeitrag deckt Betrieb, Vorbereitung und Werterhalt der Fahrzeuge."
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tischleinfahrdich.ch/#organization",
+      "name": "Tischlein fahr dich",
+      "url": "https://tischleinfahrdich.ch/",
+      "logo": "https://tischleinfahrdich.ch/img/favicon.svg",
+      "areaServed": [
+        "Grossraum Thun",
+        "Grossraum Bern"
+      ],
+      "description": "tischleinfahrdich.ch macht historische Automobile als Kulturgut für einen erweiterten Kreis erlebbar. Kein gewerblicher Anbieter: Der Unkostenbeitrag deckt Betrieb, Vorbereitung und Werterhalt der Fahrzeuge.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lerchenfeldstrasse 62",
+        "postalCode": "3603",
+        "addressLocality": "Thun",
+        "addressRegion": "BE",
+        "addressCountry": "CH"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://tischleinfahrdich.ch/#website",
-        "url": "https://tischleinfahrdich.ch/",
-        "name": "Tischlein fahr dich",
-        "inLanguage": "de-CH",
-        "publisher": { "@id": "https://tischleinfahrdich.ch/#organization" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://tischleinfahrdich.ch/anfrage/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://tischleinfahrdich.ch/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Anfrage",
-            "item": "https://tischleinfahrdich.ch/anfrage/"
-          }
-        ]
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+41 79 503 13 39",
+        "url": "https://tischleinfahrdich.ch/anfrage/",
+        "availableLanguage": [
+          "de"
+        ],
+        "areaServed": "CH"
       }
-    ]
-  }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tischleinfahrdich.ch/#website",
+      "url": "https://tischleinfahrdich.ch/",
+      "name": "Tischlein fahr dich",
+      "inLanguage": "de-CH",
+      "publisher": {
+        "@id": "https://tischleinfahrdich.ch/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tischleinfahrdich.ch/anfrage/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://tischleinfahrdich.ch/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Anfrage",
+          "item": "https://tischleinfahrdich.ch/anfrage/"
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

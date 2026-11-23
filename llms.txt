@@ -1,0 +1,15 @@
+# Tischlein fahr dich
+
+> Nicht gewerbsmässige Oldtimer-Ausfahrten zum Mittagessen in Landgasthöfe im Kanton Bern, freitags ab Bern oder Thun. Unkostenbeitrag CHF 170 pro Stunde Fahrzeit.
+
+## Wichtigste Seiten
+
+- [Startseite (Markdown)](https://tischleinfahrdich.ch/index.md): Angebot, Ablauf, Ziele, Fahrzeuge
+- [Unkostenbeitrag](https://tischleinfahrdich.ch/pricing.md): Ansatz und Beispiele
+- [Anfrage](https://tischleinfahrdich.ch/anfrage/): verfügbare Freitage, Berechnung, Anfrage senden
+- [Ziele](https://tischleinfahrdich.ch/ziele/): vier Landgasthöfe
+- [Fahrzeuge](https://tischleinfahrdich.ch/fahrzeuge/)
+- [Gutschein](https://tischleinfahrdich.ch/gutschein/)
+- [Haltung und Über uns](https://tischleinfahrdich.ch/ueber-uns/)
+- [Impressum](https://tischleinfahrdich.ch/impressum/)
+- [Datenschutz](https://tischleinfahrdich.ch/datenschutz/)

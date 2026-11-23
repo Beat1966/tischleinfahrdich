@@ -22,111 +22,139 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="./css/style.css">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://tischleinfahrdich.ch/#organization",
-        "name": "Tischlein fahr dich",
-        "url": "https://tischleinfahrdich.ch/",
-        "logo": "https://tischleinfahrdich.ch/img/favicon.svg",
-        "areaServed": ["Grossraum Thun", "Grossraum Bern"],
-        "description": "tischleinfahrdich.ch macht historische Automobile als Kulturgut für einen erweiterten Kreis erlebbar. Kein gewerblicher Anbieter: Der Unkostenbeitrag deckt Betrieb, Vorbereitung und Werterhalt der Fahrzeuge."
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tischleinfahrdich.ch/#organization",
+      "name": "Tischlein fahr dich",
+      "url": "https://tischleinfahrdich.ch/",
+      "logo": "https://tischleinfahrdich.ch/img/favicon.svg",
+      "areaServed": [
+        "Grossraum Thun",
+        "Grossraum Bern"
+      ],
+      "description": "tischleinfahrdich.ch macht historische Automobile als Kulturgut für einen erweiterten Kreis erlebbar. Kein gewerblicher Anbieter: Der Unkostenbeitrag deckt Betrieb, Vorbereitung und Werterhalt der Fahrzeuge.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lerchenfeldstrasse 62",
+        "postalCode": "3603",
+        "addressLocality": "Thun",
+        "addressRegion": "BE",
+        "addressCountry": "CH"
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://tischleinfahrdich.ch/#website",
-        "url": "https://tischleinfahrdich.ch/",
-        "name": "Tischlein fahr dich",
-        "inLanguage": "de-CH",
-        "publisher": { "@id": "https://tischleinfahrdich.ch/#organization" }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+41 79 503 13 39",
+        "url": "https://tischleinfahrdich.ch/anfrage/",
+        "availableLanguage": [
+          "de"
+        ],
+        "areaServed": "CH"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tischleinfahrdich.ch/#website",
+      "url": "https://tischleinfahrdich.ch/",
+      "name": "Tischlein fahr dich",
+      "inLanguage": "de-CH",
+      "publisher": {
+        "@id": "https://tischleinfahrdich.ch/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tischleinfahrdich.ch/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Startseite",
+          "item": "https://tischleinfahrdich.ch/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tischleinfahrdich.ch/#service",
+      "serviceType": "Oldtimer-Ausfahrt mit Lunch",
+      "provider": {
+        "@id": "https://tischleinfahrdich.ch/#organization"
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://tischleinfahrdich.ch/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Startseite",
-            "item": "https://tischleinfahrdich.ch/"
+      "areaServed": [
+        "Grossraum Thun",
+        "Grossraum Bern"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "description": "Unkostenbeitrag für Betrieb, Vorbereitung und Werterhalt des historischen Fahrzeugs (pro Stunde Fahrzeit für Hin- und Rückfahrt, ab 1 Stunde; freitags, Ankunft im Restaurant um 11:30 Uhr).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": 170,
+          "priceCurrency": "CHF",
+          "unitCode": "HUR"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tischleinfahrdich.ch/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Muss ich selbst fahren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Sie sitzen auf dem Beifahrerplatz, der Halter fährt. Selbstfahren ist ausgeschlossen."
           }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://tischleinfahrdich.ch/#service",
-        "serviceType": "Oldtimer-Ausfahrt mit Lunch",
-        "provider": { "@id": "https://tischleinfahrdich.ch/#organization" },
-        "areaServed": ["Grossraum Thun", "Grossraum Bern"],
-        "offers": {
-          "@type": "Offer",
-          "description": "Unkostenbeitrag für Betrieb, Vorbereitung und Werterhalt des historischen Fahrzeugs (pro Stunde Fahrzeit für Hin- und Rückfahrt, ab 1 Stunde; freitags, Ankunft im Restaurant um 11:30 Uhr).",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": 170,
-            "priceCurrency": "CHF",
-            "unitCode": "HUR"
+        },
+        {
+          "@type": "Question",
+          "name": "Kann man bei Ihnen einen Oldtimer mieten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein, wir vermieten nicht. Sie erleben eine kuratierte Ausfahrt als Beifahrer, ohne Haftung und ohne Schaltstress."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie hoch ist der Unkostenbeitrag?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CHF 170 pro Stunde Fahrzeit (Hin- und Rückfahrt), ab 1 Stunde. Die Zeit im Restaurant wird nicht verrechnet. Das Essen ist nicht inbegriffen: Sie bestellen und bezahlen direkt im Restaurant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wann und wo sind Ausfahrten möglich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Freitags. Wir sind um 11:30 Uhr im Restaurant, das Essen beginnt zwischen 11:45 und 12:00 Uhr. Treffpunkt ist das Hotel Bellevue Palace in Bern oder der Rathausplatz in Thun (Restaurant Krone); auf Wunsch holen wir Sie auch zu Hause ab."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viele Personen haben Platz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Im Sbarro BMW 328, im Porsche 356 B und im Porsche Boxster S fährt jeweils ein Gast mit. Im Peugeot 203 C haben bis zu drei Gäste Platz – ideal für Paare oder kleine Familien."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was passiert bei schlechtem Wetter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir fahren bei jedem Wetter. Eine Verschiebung wegen Wetter ist nicht vorgesehen."
           }
         }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://tischleinfahrdich.ch/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Muss ich selbst fahren?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nein. Sie sitzen auf dem Beifahrerplatz, der Halter fährt. Selbstfahren ist ausgeschlossen."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Kann man bei Ihnen einen Oldtimer mieten?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Nein, wir vermieten nicht. Sie erleben eine kuratierte Ausfahrt als Beifahrer, ohne Haftung und ohne Schaltstress."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Wie hoch ist der Unkostenbeitrag?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "CHF 170 pro Stunde Fahrzeit (Hin- und Rückfahrt), ab 1 Stunde. Die Zeit im Restaurant wird nicht verrechnet. Das Essen ist nicht inbegriffen: Sie bestellen und bezahlen direkt im Restaurant."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Wann und wo sind Ausfahrten möglich?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Freitags. Wir sind um 11:30 Uhr im Restaurant, das Essen beginnt zwischen 11:45 und 12:00 Uhr. Treffpunkt ist das Hotel Bellevue Palace in Bern oder der Rathausplatz in Thun (Restaurant Krone); auf Wunsch holen wir Sie auch zu Hause ab."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Wie viele Personen haben Platz?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Im Sbarro BMW 328, im Porsche 356 B und im Porsche Boxster S fährt jeweils ein Gast mit. Im Peugeot 203 C haben bis zu drei Gäste Platz – ideal für Paare oder kleine Familien."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Was passiert bei schlechtem Wetter?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Wir fahren bei jedem Wetter. Eine Verschiebung wegen Wetter ist nicht vorgesehen."
-            }
-          }
-        ]
-      }
-    ]
-  }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
