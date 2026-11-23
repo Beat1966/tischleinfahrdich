@@ -5,7 +5,7 @@
   "maxDauerStunden": null,
   "erlaubterWochentag": 5,
   "empfaengerEmail": "b.sutter@me.com",
-  "anfrageEndpoint": "",
+  "anfrageEndpoint": "https://script.google.com/macros/s/AKfycbyk8noua3-1gJPKEpHXL8cK7bpHEVrCrt99-pTTuXl90H8Yunwt5fhZOmI6NBWjOt1r/exec",
   "ziele": [
     {
       "id": "loewen-riffenmatt",
