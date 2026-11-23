@@ -346,7 +346,7 @@
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // kein CORS-Preflight, Apps Script liest e.postData.contents
         body: JSON.stringify(payload)
       });
 
