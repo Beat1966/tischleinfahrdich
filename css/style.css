@@ -877,6 +877,29 @@ summary:focus-visible {
   color: #FFF;
 }
 
+.footer-social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 14px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(230, 207, 163, 0.45);
+  border-radius: 50%;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  border-color: #FFF;
+}
+
 /* Unterseiten: Breadcrumb, Tabellen, Steckbrief, Textseiten */
 .breadcrumb {
   margin: 0 0 14px;

@@ -37,3 +37,8 @@ Die Ausfahrt gibt es als Gutschein (PDF per E-Mail), gültig ein Jahr ab Ausstel
 - Verfügbare Freitage wählen und Unkostenbeitrag berechnen: [/anfrage/](https://tischleinfahrdich.ch/anfrage/)
 - Beat Sutter, Lerchenfeldstrasse 62, 3603 Thun, Telefon +41 79 503 13 39
 - Impressum: [/impressum/](https://tischleinfahrdich.ch/impressum/) · Datenschutz: [/datenschutz/](https://tischleinfahrdich.ch/datenschutz/)
+
+## Social Media
+
+- Instagram: https://www.instagram.com/tischleinfahrdich/
+- Facebook: https://www.facebook.com/1367224376483833
