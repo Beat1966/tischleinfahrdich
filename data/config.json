@@ -4,16 +4,6 @@
   "mindestDauerStunden": 1,
   "maxDauerStunden": null,
   "erlaubterWochentag": 5,
-  "zeitfenster": {
-    "start": "10:00",
-    "ende": "18:00",
-    "rasterMinuten": 30,
-    "standard": "11:30"
-  },
-  "abholorte": [
-    "Grossraum Thun",
-    "Grossraum Bern"
-  ],
   "empfaengerEmail": "b.sutter@me.com",
   "anfrageEndpoint": "",
   "ziele": [
@@ -28,7 +18,10 @@
         2
       ],
       "ruhetageText": "Montag und Dienstag",
-      "spaetesterStart": null
+      "fahrzeitMinuten": {
+        "bern": 40,
+        "thun": 45
+      }
     },
     {
       "id": "hirsernbad-ursenbach",
@@ -41,7 +34,10 @@
         3
       ],
       "ruhetageText": "Dienstag und Mittwoch",
-      "spaetesterStart": null
+      "fahrzeitMinuten": {
+        "bern": 60,
+        "thun": 75
+      }
     },
     {
       "id": "bahnhoefli-steffisburg",
@@ -54,7 +50,10 @@
         3
       ],
       "ruhetageText": "Dienstag und Mittwoch",
-      "spaetesterStart": "11:30"
+      "fahrzeitMinuten": {
+        "bern": 40,
+        "thun": 15
+      }
     },
     {
       "id": "kemmeriboden-schangnau",
@@ -68,7 +67,10 @@
         3
       ],
       "ruhetageText": "Montag bis Mittwoch",
-      "spaetesterStart": "15:00"
+      "fahrzeitMinuten": {
+        "bern": 75,
+        "thun": 60
+      }
     }
   ],
   "fahrzeuge": [
@@ -95,6 +97,35 @@
       "name": "Porsche Boxster S 3.2",
       "kurzinfo": "Jahrgang 2003, der Youngtimer mit Stoffverdeck.",
       "plaetze": 1
+    }
+  ],
+  "ankunftRestaurant": "11:30",
+  "essenText": "Das Essen beginnt zwischen 11:45 und 12:00 Uhr.",
+  "abrundungMinuten": 60,
+  "treffpunkte": [
+    {
+      "id": "bern",
+      "label": "Bern, Hotel Bellevue Palace",
+      "region": "bern",
+      "wunschort": false
+    },
+    {
+      "id": "thun",
+      "label": "Thun, Rathausplatz (Restaurant Krone)",
+      "region": "thun",
+      "wunschort": false
+    },
+    {
+      "id": "wunsch-bern",
+      "label": "Wunschort im Grossraum Bern (auf Anfrage)",
+      "region": "bern",
+      "wunschort": true
+    },
+    {
+      "id": "wunsch-thun",
+      "label": "Wunschort im Grossraum Thun (auf Anfrage)",
+      "region": "thun",
+      "wunschort": true
     }
   ]
 }

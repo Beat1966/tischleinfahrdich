@@ -6,11 +6,11 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Ausfahrt anfragen &amp; Unkostenbeitrag berechnen | Tischlein fahr dich</title>
   <meta name="description" content="Stellen Sie Ihre kuratierte Oldtimer-Ausfahrt ab Thun oder Bern zusammen und berechnen Sie den Unkostenbeitrag. Auch als Gutschein per PDF anfragbar.">
-  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,7 +59,7 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="brand" aria-label="tischleinfahrdich.ch Startseite">
+      <a href="../index.html" class="brand" aria-label="tischleinfahrdich.ch Startseite">
         <svg width="44" height="44" viewBox="0 0 120 120" aria-hidden="true">
           <g fill="none" stroke="#2F4A3A" stroke-width="6" stroke-linecap="round">
             <circle cx="60" cy="60" r="33"></circle>
@@ -79,13 +79,13 @@
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="hauptnavigation">Menü</button>
 
       <nav id="hauptnavigation" class="site-nav" aria-label="Hauptnavigation">
-        <a href="/#ablauf">So läuft es</a>
-        <a href="/#anlaesse">Anlässe</a>
-        <a href="/ziele/">Ziele</a>
-        <a href="/fahrzeuge/">Fahrzeuge</a>
-        <a href="/ueber-uns/">Haltung</a>
-        <a href="/#faq">Fragen</a>
-        <a href="/anfrage/" class="nav-cta" aria-current="page">Ausfahrt anfragen</a>
+        <a href="../index.html#ablauf">So läuft es</a>
+        <a href="../index.html#anlaesse">Anlässe</a>
+        <a href="../ziele/index.html">Ziele</a>
+        <a href="../fahrzeuge/index.html">Fahrzeuge</a>
+        <a href="../ueber-uns/index.html">Haltung</a>
+        <a href="../index.html#faq">Fragen</a>
+        <a href="../anfrage/index.html" class="nav-cta" aria-current="page">Ausfahrt anfragen</a>
       </nav>
     </div>
   </header>
@@ -95,13 +95,13 @@
       <div class="page-hero-inner">
         <p class="eyebrow">Konfigurator &amp; Anfrage</p>
         <h1 class="page-title">Ihre kuratierte Ausfahrt anfragen</h1>
-        <p style="margin:0">Wählen Sie Datum, Zeit, Abholort, Ziel und Fahrzeug. Der Unkostenbeitrag wird direkt berechnet.</p>
+        <p style="margin:0">Wählen Sie Datum, Treffpunkt, Ziel und Fahrzeug. Wir sind immer um 11:30 Uhr im Restaurant; Abfahrt und Unkostenbeitrag werden direkt berechnet.</p>
       </div>
     </section>
 
     <section class="container--narrow" style="padding-top: 36px; padding-bottom: 48px;">
       <div class="info-banner">
-        Unsere historischen Automobile werden mit höchster Sorgfalt als privates Kulturgut gepflegt. Um den Schweizer Bestimmungen für Veteranenfahrzeuge zu entsprechen, bieten wir diese kuratierten Ausfahrten nicht als gewerbliche Dienstleistung an. Der für Ihr exklusives Co-Pilot-Erlebnis anfallende Betrag wird transparent als reiner Unkostenbeitrag (Aufwandsentschädigung für Betrieb, Vorbereitung und Werterhalt) abgerechnet.
+        Unsere historischen Automobile werden mit höchster Sorgfalt als privates Kulturgut gepflegt. Um den Schweizer Bestimmungen für Veteranenfahrzeuge zu entsprechen, bieten wir diese kuratierten Ausfahrten nicht als gewerbliche Dienstleistung an. Der Betrag für Ihre Ausfahrt wird transparent als reiner Unkostenbeitrag (Aufwandsentschädigung für Betrieb, Vorbereitung und Werterhalt) abgerechnet.
       </div>
 
       <div class="config-card">
@@ -112,44 +112,40 @@
               <input type="date" id="tf-datum" name="datum" required>
               <div id="err-datum" class="field-error" role="alert"></div>
             </div>
-
             <div class="form-group">
-              <label for="tf-startzeit">2. Startzeit *</label>
-              <select id="tf-startzeit" name="startzeit" required></select>
-            </div>
-          </div>
-
-          <div class="form-grid form-grid--2">
-            <div class="form-group">
-              <label for="tf-dauer">3. Dauer in ganzen Stunden *</label>
-              <input type="number" id="tf-dauer" name="dauer" min="1" step="1" value="2" required>
-              <span id="tf-rueckkehr-hinweis" class="field-hint"></span>
-              <div id="err-dauer" class="field-error" role="alert"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="tf-abholort">4. Abholort *</label>
+              <label for="tf-abholort">2. Treffpunkt *</label>
               <select id="tf-abholort" name="abholort" required></select>
             </div>
           </div>
 
-          <div class="form-grid form-grid--2">
+          <div class="form-group hidden" id="tf-wunschort-wrap">
+            <label for="tf-wunschort">Adresse für die Abholung *</label>
+            <input type="text" id="tf-wunschort" name="wunschort" placeholder="Strasse, PLZ Ort">
+            <span class="field-hint">Abfahrtszeit und Unkostenbeitrag rechnen wir ab dem nächsten Treffpunkt und bestätigen sie Ihnen persönlich.</span>
+            <div id="err-wunschort" class="field-error" role="alert"></div>
+          </div>
+
+<div class="form-grid form-grid--2">
             <div class="form-group">
-              <label for="tf-ziel">5. Ziel (ausgewähltes Gilde-Restaurant) *</label>
+              <label for="tf-ziel">3. Ziel (ausgewähltes Gilde-Restaurant) *</label>
               <select id="tf-ziel" name="ziel" required></select>
               <div id="err-ziel" class="field-error" role="alert"></div>
             </div>
 
             <div class="form-group">
-              <label for="tf-fahrzeug">6. Gewünschtes Fahrzeug *</label>
+              <label for="tf-fahrzeug">4. Gewünschtes Fahrzeug *</label>
               <select id="tf-fahrzeug" name="fahrzeug" required></select>
             </div>
+          </div>
+
+          <div class="info-banner" id="tf-zeitplan" aria-live="polite" style="margin-bottom:20px;">
+            <strong>Ihr Zeitplan:</strong> <span id="tf-zeitplan-text">Treffpunkt und Ziel wählen.</span>
           </div>
 
           <div class="form-group">
             <div class="checkbox-row">
               <input type="checkbox" id="tf-gutschein" name="gutschein">
-              <label for="tf-gutschein"><strong>7. Als Gutschein anfragen</strong> (Versand als PDF per E-Mail)</label>
+              <label for="tf-gutschein"><strong>5. Als Gutschein anfragen</strong> (Versand als PDF per E-Mail)</label>
             </div>
           </div>
 
@@ -159,7 +155,7 @@
           </div>
 
           <div class="form-group">
-            <label for="tf-hinweise">8. Ernährungswünsche / Allergien / Mobilität (optional)</label>
+            <label for="tf-hinweise">6. Ernährungswünsche / Allergien / Mobilität (optional)</label>
             <textarea id="tf-hinweise" name="hinweise" placeholder="z. B. vegetarisch, glutenfrei oder Hinweise zum Ein- und Ausstieg"></textarea>
           </div>
 
@@ -171,20 +167,20 @@
             <h2>Übersicht Ihrer Ausfahrt</h2>
             <ul class="result-list">
               <li><span>Datum</span><strong id="res-datum"></strong></li>
-              <li><span>Zeit</span><strong id="res-zeit"></strong></li>
-              <li><span>Dauer</span><strong id="res-dauer"></strong></li>
-              <li><span>Abholort</span><strong id="res-abholort"></strong></li>
+              <li><span>Abfahrt</span><strong id="res-zeit"></strong></li>
+              <li><span>Verrechnete Fahrzeit</span><strong id="res-dauer"></strong></li>
+              <li><span>Treffpunkt</span><strong id="res-abholort"></strong></li>
               <li><span>Ziel</span><strong id="res-ziel"></strong></li>
               <li><span>Fahrzeug</span><strong id="res-fahrzeug"></strong></li>
               <li><span>Gutschein</span><strong id="res-gutschein"></strong></li>
             </ul>
             <p class="result-total">Unkostenbeitrag: <span id="res-beitrag"></span></p>
-            <p class="field-hint" style="text-align:right; margin:0">CHF 170 pro Stunde · reine Aufwandsentschädigung</p>
+            <p class="field-hint" style="text-align:right; margin:0">CHF 170 pro Stunde Fahrzeit (hin und zurück) · reine Aufwandsentschädigung</p>
           </div>
 
           <hr style="border:0; border-top:1px solid var(--linie); margin: 28px 0;">
 
-          <h2 style="margin:0 0 18px; font-family:var(--font-serif); color:var(--gruen); font-size:1.45rem;">9. Ihre Kontaktdaten</h2>
+          <h2 style="margin:0 0 18px; font-family:var(--font-serif); color:var(--gruen); font-size:1.45rem;">7. Ihre Kontaktdaten</h2>
 
           <div class="form-group">
             <label for="tf-name">Vorname Name *</label>
@@ -209,7 +205,7 @@
           <div class="form-group">
             <div class="checkbox-row">
               <input type="checkbox" id="tf-bestaetigung" name="bestaetigung" required>
-              <label for="tf-bestaetigung">Ich bestätige, dass ich einen Beifahrerplatz für eine exklusive Heritage-Ausfahrt anfrage. Mir ist bekannt, dass es sich hierbei nicht um eine gewerbliche Personenbeförderung handelt und der vereinbarte Betrag rechtlich als reiner Unkostenbeitrag (Aufwandsentschädigung für Betrieb und Werterhalt des historischen Fahrzeugs) entrichtet wird.</label>
+              <label for="tf-bestaetigung">Ich bestätige, dass ich einen Beifahrerplatz für eine Oldtimer-Ausfahrt anfrage. Mir ist bekannt, dass es sich hierbei nicht um eine gewerbliche Personenbeförderung handelt und der vereinbarte Betrag rechtlich als reiner Unkostenbeitrag (Aufwandsentschädigung für Betrieb und Werterhalt des historischen Fahrzeugs) entrichtet wird.</label>
             </div>
             <div id="err-bestaetigung" class="field-error" role="alert"></div>
           </div>
@@ -225,11 +221,11 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-stance">tischleinfahrdich.ch macht historische Automobile als Kulturgut erlebbar. Kein gewerblicher Anbieter: Der Unkostenbeitrag deckt Betrieb, Vorbereitung und Werterhalt der Fahrzeuge.</p>
-      <p><a href="/anfrage/">Anfrage</a> · <a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a></p>
+      <p><a href="../anfrage/index.html">Anfrage</a> · <a href="../impressum/index.html">Impressum</a> · <a href="../datenschutz/index.html">Datenschutz</a></p>
     </div>
   </footer>
 
-  <script src="/js/nav.js" defer></script>
-  <script src="/js/konfigurator.js" defer></script>
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/konfigurator.js" defer></script>
 </body>
 </html>

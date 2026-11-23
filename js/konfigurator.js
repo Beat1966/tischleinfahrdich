@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const CONFIG_URL = '/data/config.json';
+  const CONFIG_URL = new URL('../data/config.json', document.currentScript.src).href;
   let appConfig = null;
   let lastPayload = null;
 
@@ -9,9 +9,9 @@
   if (!form) return;
 
   const elDate = document.getElementById('tf-datum');
-  const elTime = document.getElementById('tf-startzeit');
-  const elDuration = document.getElementById('tf-dauer');
-  const elReturnHint = document.getElementById('tf-rueckkehr-hinweis');
+  const elWunschWrap = document.getElementById('tf-wunschort-wrap');
+  const elWunsch = document.getElementById('tf-wunschort');
+  const elPlanText = document.getElementById('tf-zeitplan-text');
   const elLocation = document.getElementById('tf-abholort');
   const elTarget = document.getElementById('tf-ziel');
   const elVehicle = document.getElementById('tf-fahrzeug');
@@ -77,60 +77,37 @@
     lastPayload = null;
   }
 
-  function updateReturnTime() {
-    const start = elTime.value;
-    const hours = parseInt(elDuration.value, 10);
-    if (!start || isNaN(hours) || hours < 1) {
-      elReturnHint.textContent = '';
-      return;
-    }
-    const [hh, mm] = start.split(':').map(Number);
-    const totalMinutes = hh * 60 + mm + hours * 60;
-    const endH = Math.floor(totalMinutes / 60) % 24;
-    const endM = totalMinutes % 60;
-    const endStr = `${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}`;
-    elReturnHint.textContent = `Rückkehr ca. ${endStr} Uhr`;
+  const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  const fmtTime = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+
+  // Zeitplan: Ankunft immer zur festen Zeit im Restaurant, Abfahrt rückwärts gerechnet
+  function computePlan() {
+    if (!appConfig) return null;
+    const tp = appConfig.treffpunkte.find(t => t.id === elLocation.value);
+    const ziel = appConfig.ziele.find(z => z.id === elTarget.value);
+    if (!tp || !ziel || !ziel.fahrzeitMinuten) return null;
+    const fahrt = ziel.fahrzeitMinuten[tp.region];
+    const ankunft = toMin(appConfig.ankunftRestaurant);
+    const abfahrt = ankunft - fahrt;
+    const raster = appConfig.abrundungMinuten || 60;
+    const verrechnetMin = Math.max(appConfig.mindestDauerStunden * 60, Math.ceil((2 * fahrt) / raster) * raster);
+    return { tp, ziel, fahrt, abfahrt: fmtTime(abfahrt), ankunft: appConfig.ankunftRestaurant, stunden: verrechnetMin / 60 };
   }
 
-  function populateTimeOptions(cfg) {
-    const previous = elTime.value;
-    elTime.innerHTML = '';
-    const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
-    const ziel = (cfg.ziele || []).find(z => z.id === elTarget.value);
-    let endMin = toMin(cfg.zeitfenster.ende);
-    if (ziel && ziel.spaetesterStart) endMin = Math.min(endMin, toMin(ziel.spaetesterStart));
-    const step = cfg.zeitfenster.rasterMinuten || 30;
-    const values = [];
-    for (let m = toMin(cfg.zeitfenster.start); m <= endMin; m += step) {
-      const val = `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
-      values.push(val);
-      const opt = document.createElement('option');
-      opt.value = val;
-      opt.textContent = `${val} Uhr`;
-      elTime.appendChild(opt);
-    }
-    if (values.includes(previous)) elTime.value = previous;
-    else if (values.includes(cfg.zeitfenster.standard)) elTime.value = cfg.zeitfenster.standard;
-    else elTime.value = values[values.length - 1];
-
-    let hint = document.getElementById('tf-startzeit-hinweis');
-    if (!hint) {
-      hint = document.createElement('span');
-      hint.id = 'tf-startzeit-hinweis';
-      hint.className = 'field-hint';
-      elTime.insertAdjacentElement('afterend', hint);
-    }
-    hint.textContent = (ziel && ziel.spaetesterStart)
-      ? `Für ${ziel.name} ist der Start bis spätestens ${ziel.spaetesterStart} Uhr möglich, damit Sie vor Küchenschluss ankommen.`
-      : '';
+  function updatePlan() {
+    const p = computePlan();
+    elWunschWrap.classList.toggle('hidden', !(p && p.tp.wunschort));
+    if (!p) { elPlanText.textContent = 'Treffpunkt und Ziel wählen.'; return; }
+    const ort = p.tp.wunschort ? `ab ${p.tp.region === 'bern' ? 'Bern' : 'Thun'} (Abholzeit am Wunschort bestätigen wir persönlich)` : `ab ${p.tp.label}`;
+    elPlanText.textContent = `Abfahrt ${p.abfahrt} Uhr ${ort}, ca. ${p.fahrt} Min. Fahrt. Ankunft ${p.ankunft} Uhr bei ${p.ziel.name}. ${appConfig.essenText} Verrechnet werden ${p.stunden} Std. Fahrzeit (hin und zurück) = ${formatCHF(p.stunden * appConfig.ansatzProStunde)}`;
   }
 
   function populateSelects(cfg) {
     elLocation.innerHTML = '';
-    cfg.abholorte.forEach(ort => {
+    cfg.treffpunkte.forEach(t => {
       const opt = document.createElement('option');
-      opt.value = ort;
-      opt.textContent = ort;
+      opt.value = t.id;
+      opt.textContent = t.label;
       elLocation.appendChild(opt);
     });
 
@@ -181,12 +158,12 @@
       showError('err-datum', '');
     }
 
-    const duration = parseInt(elDuration.value, 10);
-    if (isNaN(duration) || duration < appConfig.mindestDauerStunden || !Number.isInteger(Number(elDuration.value))) {
-      showError('err-dauer', `Bitte geben Sie ganze Stunden an (mindestens ${appConfig.mindestDauerStunden} Stunde).`);
+    const plan = computePlan();
+    if (plan && plan.tp.wunschort && !elWunsch.value.trim()) {
+      showError('err-wunschort', 'Bitte geben Sie die Adresse für die Abholung an.');
       ok = false;
     } else {
-      showError('err-dauer', '');
+      showError('err-wunschort', '');
     }
 
     const selectedTarget = appConfig.ziele.find(z => z.id === elTarget.value);
@@ -241,7 +218,8 @@
       month: '2-digit',
       year: 'numeric'
     });
-    const hours = parseInt(elDuration.value, 10);
+    const plan = computePlan();
+    const hours = plan ? plan.stunden : appConfig.mindestDauerStunden;
     const total = hours * appConfig.ansatzProStunde;
     const zielObj = appConfig.ziele.find(z => z.id === elTarget.value);
     const fzObj = appConfig.fahrzeuge.find(f => f.id === elVehicle.value);
@@ -249,10 +227,12 @@
     return {
       datumISO: elDate.value,
       datumText: formattedDate,
-      startzeit: elTime.value,
-      rueckkehr: elReturnHint.textContent,
+      abfahrt: plan ? plan.abfahrt : '',
+      ankunftRestaurant: appConfig.ankunftRestaurant,
+      fahrzeitEinwegMinuten: plan ? plan.fahrt : null,
       dauerStunden: hours,
-      abholort: elLocation.value,
+      abholort: plan ? plan.tp.label : elLocation.value,
+      wunschortAdresse: plan && plan.tp.wunschort ? elWunsch.value.trim() : '',
       zielId: zielObj ? zielObj.id : elTarget.value,
       zielName: zielObj ? zielObj.label : elTarget.value,
       fahrzeugId: fzObj ? fzObj.id : elVehicle.value,
@@ -279,8 +259,8 @@
     lastPayload = data;
 
     document.getElementById('res-datum').textContent = data.datumText;
-    document.getElementById('res-zeit').textContent = `${data.startzeit} Uhr (${data.rueckkehr})`;
-    document.getElementById('res-dauer').textContent = data.dauerStunden === 1 ? '1 Stunde' : `${data.dauerStunden} Stunden`;
+    document.getElementById('res-zeit').textContent = `${data.abfahrt} Uhr, Ankunft ${data.ankunftRestaurant} Uhr`;
+    document.getElementById('res-dauer').textContent = data.dauerStunden === 1 ? '1 Stunde (hin und zurück)' : `${data.dauerStunden} Stunden (hin und zurück)`;
     document.getElementById('res-abholort').textContent = data.abholort;
     document.getElementById('res-ziel').textContent = data.zielName;
     document.getElementById('res-fahrzeug').textContent = data.fahrzeugName;
@@ -298,9 +278,9 @@
       'Anfrage für eine kuratierte Ausfahrt (tischleinfahrdich.ch)',
       '------------------------------------------------------------',
       `Datum: ${d.datumText}`,
-      `Startzeit: ${d.startzeit} Uhr (${d.rueckkehr})`,
-      `Dauer: ${d.dauerStunden} Stunde(n)`,
-      `Abholort: ${d.abholort}`,
+      `Abfahrt: ${d.abfahrt} Uhr (Ankunft im Restaurant ${d.ankunftRestaurant} Uhr)`,
+      `Verrechnete Fahrzeit: ${d.dauerStunden} Stunde(n), hin und zurück`,
+      `Treffpunkt: ${d.abholort}${d.wunschortAdresse ? ' – Adresse: ' + d.wunschortAdresse : ''}`,
       `Ziel: ${d.zielName}`,
       `Gewünschtes Fahrzeug: ${d.fahrzeugName} (nach Verfügbarkeit)`,
       `Als Gutschein (PDF per E-Mail): ${d.alsGutschein ? 'Ja' : 'Nein'}${d.empfaengerName ? ' – für ' + d.empfaengerName : ''}`,
@@ -366,7 +346,7 @@
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // kein CORS-Preflight, Apps Script liest e.postData.contents
         body: JSON.stringify(payload)
       });
 
@@ -376,6 +356,7 @@
         statusBox.className = 'status-box status-box--success is-visible';
         statusBox.innerHTML = '<p style="margin:0"><strong>Vielen Dank für Ihre Anfrage.</strong> Wir prüfen die Verfügbarkeit und melden uns persönlich bei Ihnen.</p>';
         form.reset();
+        updatePlan();
         elRecipientWrap.classList.add('hidden');
         resultBox.classList.remove('is-visible');
       } else {
@@ -390,16 +371,15 @@
   }
 
   // Event-Listener: Ergebnis bei jeder Änderung zurücksetzen
-  [elDate, elTime, elDuration, elLocation, elTarget, elVehicle, elVoucher, elRecipient, elNotes].forEach(el => {
+  [elDate, elLocation, elWunsch, elTarget, elVehicle, elVoucher, elRecipient, elNotes].forEach(el => {
     el.addEventListener('input', () => {
       clearResult();
-      updateReturnTime();
+      updatePlan();
     });
     el.addEventListener('change', () => {
       clearResult();
-      updateReturnTime();
-      if (el === elDate) validateTripFields();
-      if (el === elTarget) { populateTimeOptions(appConfig); updateReturnTime(); validateTripFields(); }
+      updatePlan();
+      if (el === elDate || el === elTarget) validateTripFields();
     });
   });
 
@@ -424,16 +404,8 @@
       elDate.step = '7';
       elDate.value = nextFriStr;
 
-      elDuration.min = String(cfg.mindestDauerStunden);
-      if (cfg.maxDauerStunden) {
-        elDuration.max = String(cfg.maxDauerStunden);
-      } else {
-        elDuration.removeAttribute('max');
-      }
-
       populateSelects(cfg);
-      populateTimeOptions(cfg);
-      updateReturnTime();
+      updatePlan();
     })
     .catch(() => {
       statusBox.className = 'status-box status-box--fallback is-visible';
