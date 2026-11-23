@@ -1,0 +1,131 @@
+{
+  "ansatzProStunde": 170,
+  "waehrung": "CHF",
+  "mindestDauerStunden": 1,
+  "maxDauerStunden": null,
+  "erlaubterWochentag": 5,
+  "empfaengerEmail": "b.sutter@me.com",
+  "anfrageEndpoint": "",
+  "ziele": [
+    {
+      "id": "loewen-riffenmatt",
+      "name": "Landgasthof Löwen",
+      "ort": "Riffenmatt",
+      "label": "Landgasthof Löwen, Riffenmatt",
+      "beschreibung": "Riffenmatt · über das Gürbetal ins Schwarzenburgerland",
+      "ruhetage": [
+        1,
+        2
+      ],
+      "ruhetageText": "Montag und Dienstag",
+      "fahrzeitMinuten": {
+        "bern": 40,
+        "thun": 45
+      }
+    },
+    {
+      "id": "hirsernbad-ursenbach",
+      "name": "Hirsere (Landgasthof Hirsernbad)",
+      "ort": "Ursenbach",
+      "label": "Hirsere (Landgasthof Hirsernbad), Ursenbach",
+      "beschreibung": "Ursenbach · durchs Emmental in den Oberaargau",
+      "ruhetage": [
+        2,
+        3
+      ],
+      "ruhetageText": "Dienstag und Mittwoch",
+      "fahrzeitMinuten": {
+        "bern": 60,
+        "thun": 75
+      }
+    },
+    {
+      "id": "bahnhoefli-steffisburg",
+      "name": "Zurflüh's Bahnhöfli",
+      "ort": "Steffisburg",
+      "label": "Zurflüh's Bahnhöfli, Steffisburg",
+      "beschreibung": "Steffisburg · die kurze Runde am Thunersee",
+      "ruhetage": [
+        2,
+        3
+      ],
+      "ruhetageText": "Dienstag und Mittwoch",
+      "fahrzeitMinuten": {
+        "bern": 40,
+        "thun": 15
+      }
+    },
+    {
+      "id": "kemmeriboden-schangnau",
+      "name": "Kemmeriboden-Bad",
+      "ort": "Schangnau",
+      "label": "Kemmeriboden-Bad, Schangnau",
+      "beschreibung": "Schangnau · über den Schallenberg an die Quelle der Emme",
+      "ruhetage": [
+        1,
+        2,
+        3
+      ],
+      "ruhetageText": "Montag bis Mittwoch",
+      "fahrzeitMinuten": {
+        "bern": 75,
+        "thun": 60
+      }
+    }
+  ],
+  "fahrzeuge": [
+    {
+      "id": "sbarro-bmw-328",
+      "name": "Sbarro BMW 328 Roadster",
+      "kurzinfo": "Design von 1936, gebaut 1976. Offen, mit Fahrtwind.",
+      "plaetze": 1
+    },
+    {
+      "id": "porsche-356-b",
+      "name": "Porsche 356 B Coupé",
+      "kurzinfo": "Jahrgang 1962. Die Ikone, geschlossen und wetterfest.",
+      "plaetze": 1
+    },
+    {
+      "id": "peugeot-203-c",
+      "name": "Peugeot 203 C",
+      "kurzinfo": "Jahrgang 1955, dreimal die 1000 Miglia gefahren.",
+      "plaetze": 3
+    },
+    {
+      "id": "porsche-boxster-s",
+      "name": "Porsche Boxster S 3.2",
+      "kurzinfo": "Jahrgang 2003, der Youngtimer mit Stoffverdeck.",
+      "plaetze": 1
+    }
+  ],
+  "ankunftRestaurant": "11:30",
+  "essenText": "Das Essen beginnt zwischen 11:45 und 12:00 Uhr.",
+  "abrundungMinuten": 60,
+  "treffpunkte": [
+    {
+      "id": "bern",
+      "label": "Bern, Hotel Bellevue Palace",
+      "region": "bern",
+      "wunschort": false
+    },
+    {
+      "id": "thun",
+      "label": "Thun, Rathausplatz (Restaurant Krone)",
+      "region": "thun",
+      "wunschort": false
+    },
+    {
+      "id": "wunsch-bern",
+      "label": "Wunschort im Grossraum Bern (auf Anfrage)",
+      "region": "bern",
+      "wunschort": true
+    },
+    {
+      "id": "wunsch-thun",
+      "label": "Wunschort im Grossraum Thun (auf Anfrage)",
+      "region": "thun",
+      "wunschort": true
+    }
+  ]
+}
