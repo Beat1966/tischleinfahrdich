@@ -59,43 +59,38 @@ Danach im Browser öffnen:
 
 | Datei | Stelle | Platzhalter |
 |---|---|---|
+| `datenschutz/index.html` | Zeile 110 | `[OFFEN: Strasse, PLZ Ort]` |
+| `impressum/index.html` | Zeile 111 | `[OFFEN: Strasse und Hausnummer]` |
+| `impressum/index.html` | Zeile 112 | `[OFFEN: PLZ und Ort]` |
+| `impressum/index.html` | Zeile 115 | `[OFFEN: Telefonnummer]` |
+| `ziele/bahnhoefli-steffisburg/index.html` | Zeile 125 | `[OFFEN: Küchenzeiten Mittag]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 133 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 205 | `[OFFEN: Distanz und Fahrzeit ab Thun]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 209 | `[OFFEN: Distanz und Fahrzeit ab Bern]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 217 | `[OFFEN: 3–4 Sätze zum Zurflüh's Bahnhöfli in Steffisburg]` |
-| `ziele/bahnhoefli-steffisburg/index.html` | Zeile 229 | `[OFFEN]` |
+| `ziele/bahnhoefli-steffisburg/index.html` | Zeile 229 | `[OFFEN: Küchenzeiten Mittag]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 238 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 239 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 240 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 241 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 242 | `[OFFEN]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 245 | `[OFFEN: Datum]` |
+| `ziele/bahnhoefli-steffisburg/index.html` | Zeile 263 | `[OFFEN: Küchenzeiten Mittag]` |
 | `ziele/bahnhoefli-steffisburg/index.html` | Zeile 264 | `[OFFEN]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 126 | `[OFFEN: Küchenzeiten Mittag]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 134 | `[OFFEN]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 206 | `[OFFEN: Distanz und Fahrzeit ab Thun]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 210 | `[OFFEN: Distanz und Fahrzeit ab Bern]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 218 | `[OFFEN: 3–4 Sätze zur Hirsere in Ursenbach]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 230 | `[OFFEN]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 125 | `[OFFEN: Küchenzeiten Mittag]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 133 | `[OFFEN]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 205 | `[OFFEN: Distanz und Fahrzeit ab Thun]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 209 | `[OFFEN: Distanz und Fahrzeit ab Bern]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 217 | `[OFFEN: 3–4 Sätze zum Landgasthof Hirsernbad in Ursenbach]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 229 | `[OFFEN: Küchenzeiten Mittag]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 238 | `[OFFEN]` |
 | `ziele/hirsernbad-ursenbach/index.html` | Zeile 239 | `[OFFEN]` |
 | `ziele/hirsernbad-ursenbach/index.html` | Zeile 240 | `[OFFEN]` |
 | `ziele/hirsernbad-ursenbach/index.html` | Zeile 241 | `[OFFEN]` |
 | `ziele/hirsernbad-ursenbach/index.html` | Zeile 242 | `[OFFEN]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 246 | `[OFFEN: Datum]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 264 | `[OFFEN: Küchenzeiten Mittag]` |
-| `ziele/hirsernbad-ursenbach/index.html` | Zeile 265 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 132 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 204 | `[OFFEN: Distanz und Fahrzeit ab Thun]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 208 | `[OFFEN: Distanz und Fahrzeit ab Bern]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 216 | `[OFFEN: 3–4 Sätze zum Kemmeriboden-Bad in Schangnau]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 228 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 237 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 238 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 239 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 240 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 241 | `[OFFEN]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 244 | `[OFFEN: Datum]` |
-| `ziele/kemmeriboden-schangnau/index.html` | Zeile 263 | `[OFFEN]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 245 | `[OFFEN: Datum]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 263 | `[OFFEN: Küchenzeiten Mittag]` |
+| `ziele/hirsernbad-ursenbach/index.html` | Zeile 264 | `[OFFEN]` |
 | `ziele/loewen-riffenmatt/index.html` | Zeile 125 | `[OFFEN: Küchenzeiten Mittag]` |
 | `ziele/loewen-riffenmatt/index.html` | Zeile 133 | `[OFFEN]` |
 | `ziele/loewen-riffenmatt/index.html` | Zeile 205 | `[OFFEN: Distanz und Fahrzeit ab Thun]` |
@@ -110,11 +105,3 @@ Danach im Browser öffnen:
 | `ziele/loewen-riffenmatt/index.html` | Zeile 245 | `[OFFEN: Datum]` |
 | `ziele/loewen-riffenmatt/index.html` | Zeile 263 | `[OFFEN: Küchenzeiten Mittag]` |
 | `ziele/loewen-riffenmatt/index.html` | Zeile 264 | `[OFFEN]` |
-
-## 6. Zeitplan und Fahrzeiten
-
-Jede Ausfahrt ist so geplant, dass wir um 11:30 Uhr im Restaurant sind; das Essen beginnt zwischen 11:45 und 12:00 Uhr.
-Die Abfahrt wird rückwärts gerechnet: `ankunftRestaurant` minus `ziele[].fahrzeitMinuten.bern|thun` in `/data/config.json`.
-Treffpunkte: Bern, Hotel Bellevue Palace · Thun, Rathausplatz (Restaurant Krone) · Wunschort auf Anfrage.
-Verrechnet wird nur die Fahrzeit hin und zurück, aufgerundet auf ganze Stunden (`abrundungMinuten`), CHF 170 pro Stunde.
-Die Fahrzeiten sind Schätzungen (Stand 22.11.2026) und auf den Zielseiten in der Tabelle «Die Strecke» ebenfalls eingetragen.
