@@ -4,7 +4,40 @@
  */
 
 const SHEET_NAME = 'Anfragen';
+const AVAIL_SHEET_NAME = 'Verfügbarkeit';
 const NOTIFY_EMAIL = 'b.sutter@me.com';
+
+/**
+ * GET: liefert die verfügbaren Freitage aus dem Tab "Verfügbarkeit".
+ * Spalte A: Datum, Spalte B: Bemerkung (optional, wird nicht angezeigt).
+ * Antwort: { status: 'ok', daten: ['2027-05-07', ...] }
+ */
+function doGet(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(AVAIL_SHEET_NAME);
+    const daten = [];
+    if (sheet && sheet.getLastRow() > 1) {
+      const tz = Session.getScriptTimeZone();
+      const values = sheet.getRange(2, 1, sheet.getLastRow() - 1, 1).getValues();
+      values.forEach(function (row) {
+        const v = row[0];
+        if (v instanceof Date) {
+          daten.push(Utilities.formatDate(v, tz, 'yyyy-MM-dd'));
+        } else if (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v.trim())) {
+          daten.push(v.trim());
+        }
+      });
+    }
+    daten.sort();
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'ok', daten: Array.from(new Set(daten)) }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'error', message: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
 
 function doPost(e) {
   try {

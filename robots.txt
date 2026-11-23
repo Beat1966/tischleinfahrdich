@@ -1,4 +1,4 @@
-# Entwicklungsphase: alle Crawler gesperrt.
-# Vor dem offiziellen Launch durch Sitemap-Verweis ersetzen und Disallow entfernen.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://tischleinfahrdich.ch/sitemap.xml
