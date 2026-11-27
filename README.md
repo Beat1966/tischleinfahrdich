@@ -62,7 +62,8 @@ Keine mehr (Stand 23.11.2026). Unbekannte Restaurantangaben stehen als «Auf Anf
 ## 6. Zeitplan und Fahrzeiten
 
 Jede Ausfahrt ist so geplant, dass wir um 11:30 Uhr im Restaurant sind; das Essen beginnt zwischen 11:45 und 12:00 Uhr.
-Die Abfahrt wird rückwärts gerechnet: `ankunftRestaurant` minus `ziele[].fahrzeitMinuten.bern|thun` in `/data/config.json`.
+Ausnahme Kemmeriboden-Bad: Ankunft 11:45 Uhr (`ziele[].ankunft`, Restaurant öffnet erst dann).
+Die Abfahrt wird rückwärts gerechnet: `ziele[].ankunft` bzw. `ankunftRestaurant` minus `ziele[].fahrzeitMinuten.bern|thun` in `/data/config.json`.
 Treffpunkte: Bern, Hotel Bellevue Palace · Thun, Rathausplatz (Restaurant Krone) · Wunschort auf Anfrage.
 Verrechnet wird nur die Fahrzeit hin und zurück, aufgerundet auf ganze Stunden (`abrundungMinuten`), CHF 170 pro Stunde.
 Die Fahrzeiten sind Schätzungen (Stand 22.11.2026) und auf den Zielseiten in der Tabelle «Die Strecke» ebenfalls eingetragen.

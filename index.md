@@ -4,7 +4,7 @@ Tischlein fahr dich (tischleinfahrdich.ch) fährt Gäste im Oldtimer zum Mittage
 
 ## So läuft es
 
-- Freitags, Ankunft im Restaurant um 11:30 Uhr, Essen ab 11:45–12:00 Uhr.
+- Freitags, Ankunft im Restaurant um 11:30 Uhr (Kemmeriboden-Bad 11:45 Uhr), Essen ab 11:45–12:00 Uhr.
 - Treffpunkte: Bern, Hotel Bellevue Palace · Thun, Rathausplatz (Restaurant Krone). Abholung zu Hause auf Anfrage.
 - Das Essen ist nicht inbegriffen: Gäste bestellen und bezahlen direkt im Restaurant.
 - Wir fahren bei jedem Wetter.

@@ -88,11 +88,12 @@
     const ziel = appConfig.ziele.find(z => z.id === elTarget.value);
     if (!tp || !ziel || !ziel.fahrzeitMinuten) return null;
     const fahrt = ziel.fahrzeitMinuten[tp.region];
-    const ankunft = toMin(appConfig.ankunftRestaurant);
+    const ankunftZeit = ziel.ankunft || appConfig.ankunftRestaurant;
+    const ankunft = toMin(ankunftZeit);
     const abfahrt = ankunft - fahrt;
     const raster = appConfig.abrundungMinuten || 60;
     const verrechnetMin = Math.max(appConfig.mindestDauerStunden * 60, Math.ceil((2 * fahrt) / raster) * raster);
-    return { tp, ziel, fahrt, abfahrt: fmtTime(abfahrt), ankunft: appConfig.ankunftRestaurant, stunden: verrechnetMin / 60 };
+    return { tp, ziel, fahrt, abfahrt: fmtTime(abfahrt), ankunft: ankunftZeit, stunden: verrechnetMin / 60 };
   }
 
   function updatePlan() {
@@ -232,7 +233,7 @@
       datumISO: elDate.value,
       datumText: formattedDate,
       abfahrt: plan ? plan.abfahrt : '',
-      ankunftRestaurant: appConfig.ankunftRestaurant,
+      ankunftRestaurant: plan ? plan.ankunft : appConfig.ankunftRestaurant,
       fahrzeitEinwegMinuten: plan ? plan.fahrt : null,
       dauerStunden: hours,
       abholort: plan ? plan.tp.label : elLocation.value,

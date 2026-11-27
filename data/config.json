@@ -70,7 +70,8 @@
       "fahrzeitMinuten": {
         "bern": 75,
         "thun": 60
-      }
+      },
+      "ankunft": "11:45"
     }
   ],
   "fahrzeuge": [
